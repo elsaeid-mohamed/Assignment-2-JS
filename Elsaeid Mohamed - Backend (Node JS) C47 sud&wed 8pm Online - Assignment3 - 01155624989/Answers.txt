@@ -1,0 +1,28 @@
+1. What is the Node.js Event Loop?
+The Event Loop helps Node.js run async tasks without stopping the program.
+It checks if the Call Stack is empty, then takes the next callback from the Event Queue and runs it.
+===================================================================================================
+2. What is Libuv and What Role Does It Play in Node.js?
+Libuv is a library that helps Node.js handle async tasks. 
+It manages the Event Loop and Thread Pool and works with the operating system to run background tasks.
+===================================================================================================
+3. How Does Node.js Handle Asynchronous Operations Under the Hood?
+When Node.js gets an async task, it sends it to Libuv. Libuv runs the task in the background. 
+After it finishes, the callback is added to the Event Queue, and the Event Loop runs it later.
+===================================================================================================
+### 4. What is the Difference Between the Call Stack, Event Queue, and Event Loop?
+Call Stack:Where code is running right now.
+Event Queue:Where finished async callbacks wait.
+Event Loop:Moves callbacks from the Event Queue to the Call Stack when it's empty.
+===================================================================================================
+ 5. What is the Node.js Thread Pool and How to Set the Thread Pool Size?
+The Thread Pool is a group of background threads used for tasks like file operations and encryption. 
+By default, it has 4 threads.
+To change its size:
+process.env.UV_THREADPOOL_SIZE = 8;
+===================================================================================================
+### 6. How Does Node.js Handle Blocking and Non-Blocking Code Execution?
+Blocking:** Node.js waits until the task finishes before running the next line of code.
+Non-Blocking:** Node.js continues running other code while the task works in the background. 
+When the task finishes, its callback is executed.
+===================================================================================================
